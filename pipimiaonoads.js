@@ -9,5 +9,5 @@ hostname = tnc3-aliec2.snssdk.com
 ***************************
 
 var obj = JSON.parse($response.body);
-// obj.ttnet_http_dns_addr = [];
+obj.data.ttnet_http_dns_addr = [];
 $done({body: JSON.stringify(obj)}); 
