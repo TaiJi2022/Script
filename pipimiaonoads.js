@@ -8,6 +8,6 @@ QuantumultX:
 hostname = tnc3-aliec2.snssdk.com
 ***************************
 
-var obj = JSON.parse($response.body);
-obj.data.ttnet_http_dns_addr = [];
-$done({body: JSON.stringify(obj)}); 
+// var obj = JSON.parse($response.body);
+// obj.data.ttnet_http_dns_addr = [];
+// $done({body: JSON.stringify(obj)}); 
