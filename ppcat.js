@@ -8,6 +8,12 @@ QuantumultX:
 hostname = api-access.pangolin-sdk-toutiao.com
 ***************************
 
-var obj = JSON.parse($response.body);
-obj.message = "";
-$done({body: JSON.stringify(obj)}); 
+var body = $response.body;
+var obj = JSON.parse(body);
+
+obj['message'] = "";
+body = JSON.stringify(obj);
+
+console.log(body);
+
+$done(body);
