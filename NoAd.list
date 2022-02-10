@@ -1,0 +1,25 @@
+#ppcat服务器
+host, tnc3-aliec2.snssdk.com, reject
+host, tnc11-aliec2.bytedance.com, reject
+host, tnc3-bjlgy.bytedance.com, reject
+host, tnc3-alisc1.bytedance.com, reject
+host, tnc3-aliec2.bytedance.com, reject
+host, tnc3-bjlgy.bytedance.com, reject
+host, tnc11-bjlgy.bytedance.com, reject
+
+
+host, cddp-track.aligames.com, reject
+host, ether-pack.pangolin-sdk-toutiao.com, reject
+host, log-api.pangolin-sdk-toutiao.com, reject
+host, client-api.itunes.apple.com, reject
+host-keyword,snssdk.com, reject
+host-keyword, googleapis.com, reject
+host-keyword, pglstatp-toutiao, reject
+host, alogs.umengcloud.com, reject
+host-suffix, cdn.jsdelivr.net, reject
+host-suffix, fastly.jsdelivr.net, reject
+host-suffix, img.alicdn.com, reject
+host-suffix, ad-channel.wikawika.xyz, reject
+host-suffix,  googleads.g.doubleclick.net, reject
+host-suffix, alogs.umeng.com, reject
+host-suffix, uop.umeng.com, reject
