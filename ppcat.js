@@ -9,11 +9,12 @@ hostname = api-access.pangolin-sdk-toutiao.com
 ***************************
 
 var body = $response.body;
-var obj = JSON.parse(body);
+// var obj = JSON.parse(body);
 
-obj['message'] = "";
-body = JSON.stringify(obj);
+// obj['message'] = "";
+// body = JSON.stringify(obj);
 
 console.log(body);
+console.log(typeof body);
 
 $done(body);
