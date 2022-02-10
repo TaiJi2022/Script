@@ -3,11 +3,11 @@
 ***************************
 QuantumultX:
 [rewrite_local]
-^https?:\/\/tnc3-aliec2.snssdk.com\/get_domains\/v4 url script-response-body https://raw.githubusercontent.com/TaiJi2022/Script/main/pipimiaonoads.js
+^https?:\/\/api-access.pangolin-sdk-toutiao.com\/api\/ad\/union\/sdk\/settings.* url script-response-body https://raw.githubusercontent.com/TaiJi2022/Script/main/pipimiaonoads.js
 [mitm]
-hostname = tnc3-aliec2.snssdk.com
+hostname = api-access.pangolin-sdk-toutiao.com
 ***************************
 
 var obj = JSON.parse($response.body);
-obj.data.ttnet_http_dns_addr = {};
+obj.message = "";
 $done({body: JSON.stringify(obj)}); 
