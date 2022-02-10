@@ -3,7 +3,7 @@
 ***************************
 QuantumultX:
 [rewrite_local]
-^https?:\/\/api-access.pangolin-sdk-toutiao.com\/api\/ad\/union\/sdk\/settings.* url script-response-body https://raw.githubusercontent.com/TaiJi2022/Script/main/pipimiaonoads.js
+^https?:\/\/api-access.pangolin-sdk-toutiao.com\/api\/ad\/union\/sdk.* url script-response-body https://raw.githubusercontent.com/TaiJi2022/Script/main/pipimiaonoads.js
 [mitm]
 hostname = api-access.pangolin-sdk-toutiao.com
 ***************************
