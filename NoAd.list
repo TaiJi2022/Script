@@ -16,7 +16,6 @@ host-keyword,snssdk.com, reject
 host-keyword, googleapis.com, reject
 host-keyword, pglstatp-toutiao, reject
 host, alogs.umengcloud.com, reject
-host-suffix, cdn.jsdelivr.net, reject
 host-suffix, fastly.jsdelivr.net, reject
 host-suffix, img.alicdn.com, reject
 host-suffix, ad-channel.wikawika.xyz, reject
