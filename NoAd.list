@@ -7,7 +7,7 @@ host, tnc3-aliec2.bytedance.com, reject
 host, tnc3-bjlgy.bytedance.com, reject
 host, tnc11-bjlgy.bytedance.com, reject
 
-
+host-suffix, ixigua.com, reject
 host, cddp-track.aligames.com, reject
 host, ether-pack.pangolin-sdk-toutiao.com, reject
 host, log-api.pangolin-sdk-toutiao.com, reject
