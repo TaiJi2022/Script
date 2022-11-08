@@ -18,7 +18,7 @@ QuantumultX 远程脚本配置:
 0 0 * * * https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 [rewrite_local]
 # 获取Cookie
-https:\/\/api\-takumi\.mihoyo\.com\/event\/bbs\_sign\_reward\/sign url script-request-header https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
+https:\/\/api-takumi\.mihoyo\.com\/event\.* url script-request-header https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 
 [Mitm] 
 hostname= api-takumi.mihoyo.com
