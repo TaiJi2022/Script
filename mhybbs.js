@@ -14,11 +14,11 @@ const CookieWA = '';
 QuantumultX 远程脚本配置:
 ************************
 [task_local]
-# 吾爱签到
-0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js
+# 米游社签到
+0 0 * * * https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 [rewrite_local]
 # 获取Cookie
-https:\/\/www\.52pojie\.cn\/home\.php\? url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js
+https:\/\/api\-takumi\.mihoyo\.com\/event\/bbs\_sign\_reward\/sign url script-request-header https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 
 [Mitm] 
 hostname= api-takumi.mihoyo.com
@@ -26,12 +26,14 @@ hostname= api-takumi.mihoyo.com
 
 const $ = API('mhybbs');
 const date = new Date();
+const body = `{"act_id":"e202009291139501","region":"cn_gf01","uid":"100121857"}`;
 const reqData = {
   url: 'https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign',
   headers: {
     Cookie: CookieWA || $.read("COOKIE"),
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0",
-  }
+  },
+  body: body
 };
 if ($.env.isRequest) {
   GetCookie()
