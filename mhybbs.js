@@ -31,7 +31,7 @@ const reqData = {
   url: 'https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign',
   headers: {
     Cookie: CookieWA || $.read("COOKIE"),
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0",
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.38.1",
   },
   body: body
 };
@@ -44,7 +44,7 @@ if ($.env.isRequest) {
 } else {
   $.http.put(reqData)
     .then((resp) => {
-        $.info(resp)
+        $.info(resp.body)
       if (resp.body.match(/OK/)) {
         $.msgBody = date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉"
       } else if (resp.body.match(/(ÄúÒÑ|\u4e0b\u671f\u518d\u6765|>��Ǹ������)/)) {
