@@ -44,7 +44,7 @@ if ($.env.isRequest) {
 } else {
   $.http.put(reqData)
     .then((resp) => {
-        $.notify(resp);
+        $.info(resp.body)
       if (resp.body.match(/OK/)) {
         $.msgBody = date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉"
       } else if (resp.body.match(/(ÄúÒÑ|\u4e0b\u671f\u518d\u6765|>��Ǹ������)/)) {
