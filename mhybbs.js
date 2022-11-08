@@ -18,7 +18,7 @@ QuantumultX 远程脚本配置:
 0 0 * * * https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 [rewrite_local]
 # 获取Cookie
-https:\/\/api-takumi\.mihoyo\.com\/event\.* url script-request-header https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
+https:\/\/api-takumi\.mihoyo\.com\/event\/bbs_sign_reward\/(home|sign|extra).* url script-request-header https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 
 [Mitm] 
 hostname= api-takumi.mihoyo.com
@@ -30,7 +30,7 @@ const body = `{"act_id":"e202009291139501","region":"cn_gf01","uid":"100121857"}
 const reqData = {
   url: 'https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign',
   headers: {
-    Cookie: CookieWA || $.read("COOKIE"),
+    Cookie: CookieWA || $.read("Cookie"),
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0",
   },
   body: body
