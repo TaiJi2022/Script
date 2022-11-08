@@ -18,7 +18,7 @@ QuantumultX 远程脚本配置:
 0 0 * * * https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 [rewrite_local]
 # 获取Cookie
-https:\/\/api-takumi\.mihoyo\.com\/event\/bbs_sign_reward\/(home|sign|extra).* url script-request-header https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
+https:\/\/api-takumi\.mihoyo\.com\/event\/bbs_sign_reward\/(home|extra).* url script-request-header https://raw.githubusercontent.com/TaiJi2022/Script/main/mhybbs.js
 
 [Mitm] 
 hostname= api-takumi.mihoyo.com
@@ -31,7 +31,7 @@ const reqData = {
   url: 'https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign',
   headers: {
     Cookie: CookieWA || $.read("COOKIE"),
-    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.38.1",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0",
   },
   body: body
 };
@@ -42,7 +42,6 @@ if ($.env.isRequest) {
 } else if (!reqData.headers.Cookie.includes('cookie_token=')) {
   $.notify('米游社', ``, `Cookie关键授权字段缺失, 需重新获取!`);
 } else {
-  $.info(reqData.headers.Cookie);
   $.http.post(reqData);
     .then((resp) => {
         $.info(resp.body)
