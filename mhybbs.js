@@ -42,7 +42,7 @@ if ($.env.isRequest) {
 } else if (!reqData.headers.Cookie.includes('cookie_token=')) {
   $.notify('米游社', ``, `Cookie关键授权字段缺失, 需重新获取!`);
 } else {
-  $.http.put(reqData)
+  $.http.post(reqData)
     .then((resp) => {
         $.info(resp.body)
       if (resp.body.match(/OK/)) {
