@@ -30,7 +30,7 @@ const body = `{"act_id":"e202009291139501","region":"cn_gf01","uid":"100121857"}
 const reqData = {
   url: 'https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign',
   headers: {
-    Cookie: CookieWA || $.read("Cookie"),
+    Cookie: CookieWA || $.read("COOKIE"),
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0",
   },
   body: body
@@ -67,7 +67,7 @@ if ($.env.isRequest) {
 function GetCookie() {
     const TM = $.read("TIME");
     const CK = $request.headers['Cookie'] || $request.headers['cookie'];
-    if (CK && CK.includes('_auth=')) {
+    if (CK && CK.includes('cookie_token=')) {
       $.write(CK, "COOKIE");
       if (!TM || TM && (Date.now() - TM) / 1000 >= 21600) {
         $.notify("米游社", "", `写入Cookie成功 🎉`);
