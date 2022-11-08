@@ -39,7 +39,7 @@ if ($.env.isRequest) {
   GetCookie()
 } else if (!reqData.headers.Cookie) {
   $.notify('米游社', ``, `未填写/未获取Cookie!`);
-} else if (!reqData.headers.Cookie.includes('_auth=')) {
+} else if (!reqData.headers.Cookie.includes('cookie_token=')) {
   $.notify('米游社', ``, `Cookie关键授权字段缺失, 需重新获取!`);
 } else {
   $.http.put(reqData)
