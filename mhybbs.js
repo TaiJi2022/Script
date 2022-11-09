@@ -32,6 +32,10 @@ const reqData = {
   headers: {
     Cookie: CookieWA || $.read("COOKIE"),
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0",
+    'x-rpc-app_version' : `2.38`,
+    'x-rpc-device_id' : `1`,
+    'x-rpc-client_type' : `5`,
+    'DS' : `1667924086,w1PA36,e2298299994b2a00703139eafa919046`
   },
   body: body
 };
@@ -42,7 +46,7 @@ if ($.env.isRequest) {
 } else if (!reqData.headers.Cookie.includes('cookie_token=')) {
   $.notify('米游社', ``, `Cookie关键授权字段缺失, 需重新获取!`);
 } else {
-  $.http.post(reqData);
+  $.http.post(reqData)
     .then((resp) => {
         $.info(resp.body)
       if (resp.body.match(/OK/)) {
