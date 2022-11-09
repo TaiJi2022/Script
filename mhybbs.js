@@ -31,8 +31,8 @@ const reqData = {
   url: 'https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign',
   headers: {
     Cookie: CookieWA || $.read("COOKIE"),
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0",
-    'x-rpc-app_version' : `2.38`,
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.38.1",
+    'x-rpc-app_version' : `2.38.1`,
     'x-rpc-device_id' : `1`,
     'x-rpc-client_type' : `5`,
     'DS' : `1667924086,w1PA36,e2298299994b2a00703139eafa919046`
