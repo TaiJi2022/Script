@@ -7,6 +7,9 @@ QX
 ************************
 */
 
+import md5 from 'md5'
+import randomstring from 'randomstring'
+
 const CookieWA = '';
 
 
@@ -25,6 +28,7 @@ hostname= api-takumi.mihoyo.com
 */
 
 const $ = API('mhybbs');
+const salt = `9nQiU3AV0rJSIBWgdynfoGMGKaklfbM7`;
 const date = new Date();
 const body = `{"act_id":"e202009291139501","region":"cn_gf01","uid":"100121857"}`;
 const reqData = {
@@ -35,7 +39,7 @@ const reqData = {
     'x-rpc-app_version' : `2.38.1`,
     'x-rpc-device_id' : `1`,
     'x-rpc-client_type' : `5`,
-    'DS' : `1667924086,w1PA36,e2298299994b2a00703139eafa919046`
+    'DS' : getDS()
   },
   body: body
 };
@@ -66,6 +70,14 @@ if ($.env.isRequest) {
       $.notify('米游社', ``, $.msgBody);
       $.done();
     })
+}
+
+function getDS() {
+  const randomStr = randomstring.generate({ length: 6 })
+  const timestamp = Math.floor(date / 1000)
+  const sign = md5(`salt=${salt}&t=${timestamp}&r=${randomStr}`)
+  const DS = `${timestamp},${randomStr},${sign}`
+  return DS
 }
 
 function GetCookie() {
