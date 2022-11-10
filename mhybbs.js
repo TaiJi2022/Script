@@ -76,7 +76,7 @@ $.http.post(reqData)
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = JSON.parse(resp.body)['data']
         const geetest = await captchaPass(data.gt, data.challenge)
-         $.info('geetest' + geetest.validate)
+         $.info(geetest.toString)
           if (geetest.validate) {
             const ex = {
                 'x-rpc-validate': geetest.validate,
@@ -127,7 +127,7 @@ function GetCookie() {
   } 
 
 function captchaPass(gt, challenge) {
-  const geetest = 'https://apiv6.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile&callback=geetest_1665115368313'
+  const geetest = 'https://apiv6.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile'
     return $.http.get(geetest).then( async (res) => {   
     $.info( res.body)
     const jsonp = await res.body
