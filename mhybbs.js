@@ -63,7 +63,7 @@ if ($.env.isRequest) {
       if (resp.body.match(/375/)) {
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = JSON.parse(resp.body)['data']
-        const geetest = captchaPass(data.gt, data.challenge)
+        const geetest = await captchaPass(data.gt, data.challenge)
           $.info('验证结果：' + geetest)
           if (geetest?.validate) {
             const ex = {
@@ -125,9 +125,9 @@ function GetCookie() {
 
 function captchaPass(gt, challenge) {
   const geetest = 'https://apiv6.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile&callback=geetest_1665115368313'
-    $.http.get(geetest).then((res) => {   
+    return $.http.get(geetest).then( async (res) => {   
     $.info( res.body)
-    const jsonp = res.body.text()
+    const jsonp = await res.body.text()
     const raw = jsonp.match(/^[^(]*?\((.*)\)[^)]*$/)?.[1]
     return JSON.parse(raw)
   })
