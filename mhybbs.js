@@ -25,7 +25,7 @@ hostname= api-takumi.mihoyo.com
 */
 
 const $ = API('mhybbs');
-const salt = `t0qEgfub6cvueAPgR5m9aQWWVciEer7v`;
+const salt = `PVeGWIZACpxXZ1ibMVJPi9inCY4Nd4y2`;
 const date = new Date();
 const body = `{"act_id":"e202009291139501","region":"cn_gf01","uid":"100121857"}`;
 const reqData = {
@@ -73,7 +73,7 @@ function getDS() {
   const randomStr = Math.floor(Math.random() * (200000 - 100000)) + 100000
   const timestamp = Math.floor(date / 1000)
   const sign = hex_md5('salt=' + salt + '&t='+ timestamp + '&r='+ randomStr)
-  const DS = '' + timestamp + randomStr + sign
+  const DS = timestamp + ',' + randomStr + ',' + sign
   $.info(`DS为：` + DS)
   return DS
 }
