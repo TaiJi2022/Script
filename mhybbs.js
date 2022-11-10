@@ -64,7 +64,7 @@ if ($.env.isRequest) {
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = JSON.parse(resp.body)['data']
         const geetest = captchaPass(data.gt, data.challenge)
-          $.info(geetest)
+          $.info('验证结果：' + geetest)
           if (geetest?.validate) {
             const ex = {
                 'x-rpc-validate': geetest.validate,
