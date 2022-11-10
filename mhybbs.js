@@ -64,7 +64,7 @@ if ($.env.isRequest) {
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = JSON.parse(resp.body)['data']
         $.info(data)
-        const geetest = captchaPass(data['gt'], data['challenge'])
+        const geetest = captchaPass(data.gt, data.challenge)
           $.info(geetest)
           if (geetest?.validate) {
             const ex = {
