@@ -75,8 +75,8 @@ if ($.env.isRequest) {
 function getDS() {
   const randomStr = randomstring.generate({ length: 6 })
   const timestamp = Math.floor(date / 1000)
-  const sign = md5(`salt=` + salt + `&t=`+ timestamp + `&r=`+ randomStr)
-  const DS = `${timestamp},${randomStr},${sign}`
+  const sign = md5('salt=' + salt + '&t='+ timestamp + '&r='+ randomStr)
+  const DS = '' + timestamp + randomStr + sign
   return DS
 }
 
