@@ -63,6 +63,7 @@ if ($.env.isRequest) {
       if (resp.body.match(/375/)) {
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = resp.body
+        $.info(data)
         const geetest = captchaPass(data['gt'], data['challenge'])
           $.info(geetest)
           if (geetest?.validate) {
