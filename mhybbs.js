@@ -125,7 +125,7 @@ function GetCookie() {
 
 function captchaPass(gt, challenge) {
   const geetest = 'https://apiv6.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile&callback=geetest_1665115368313'
-  return $.http.get(geetest).then((res) => {   
+    $.http.get(geetest).then((res) => {   
     $.info( res.body)
     const jsonp = res.body.text()
     const raw = jsonp.match(/^[^(]*?\((.*)\)[^)]*$/)?.[1]
