@@ -129,7 +129,7 @@ function captchaPass(gt, challenge) {
   const geetest = 'https://apiv6.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile&callback=geetest_1665115368313'
     return $.http.get(geetest).then( async (res) => {   
     $.info( res.body)
-    const jsonp = await res.body.text()
+    const jsonp = await res.body
     const raw = jsonp.match(/^[^(]*?\((.*)\)[^)]*$/)?.[1]
     return JSON.parse(raw)
   })
