@@ -62,12 +62,13 @@ if ($.env.isRequest) {
         $.info(resp.body)
       if (resp.body.match(/375/)) {
         $.info("签到失败 需要验证 尝试自动校验中")
-          const geetest = captchaPass(resp.body.data.gt, resp.body.data.challenge)
+        let data = req.body.json()
+        const geetest = captchaPass(data['get'], data['challenge'])
           $.info(geetest)
           if (geetest?.validate) {
             const ex = {
                 'x-rpc-validate': geetest.validate,
-                'x-rpc-challenge': resp.body.data.challenge,
+                'x-rpc-challenge': data['challenge'],
                 'x-rpc-seccode': geetest.validate + '%7Cjordan',
               }
             reqData.headers = {... reqData.headers, ... ex}
