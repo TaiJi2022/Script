@@ -68,10 +68,9 @@ function getDS() {
   $.info(`DS为：` + DS)
   return DS
 }
-async function sign() {
-
+function sign() {
 $.http.post(reqData)
-    .then((resp) => {
+    .then(async (resp) => {
         $.info(resp.body)
       if (resp.body.match(/375/)) {
         $.info("签到失败 需要验证 尝试自动校验中")
