@@ -51,7 +51,9 @@ if ($.env.isRequest) {
   $.http.post(reqData)
     .then((resp) => {
         $.info(resp.body)
-      if (resp.body.match(/OK/)) {
+      if (resp.body.match(/375/)) {
+        $.msgBody = "签到失败 需要验证"
+      } else if (resp.body.match(/OK/)) {
         $.msgBody = date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉"
       } else if (resp.body.match(/(ÄúÒÑ|\u4e0b\u671f\u518d\u6765|>��Ǹ������)/)) {
         $.msgBody = date.getMonth() + 1 + "月" + date.getDate() + "日, 已签过 ⚠️"
