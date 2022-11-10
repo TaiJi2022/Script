@@ -36,6 +36,7 @@ const reqData = {
     'x-rpc-app_version' : `2.38.1`,
     'x-rpc-device_id' : `136EB6CB8819447E96B3A291DD5442FA`,
     'x-rpc-client_type' : `5`,
+    'Referer' : `https://webstatic.mihoyo.com/bbs/event/signin-ys/index.html?bbs_auth_required=true&act_id=e202009291139501&utm_source=bbs&utm_medium=mys&utm_campaign=icon`,
     'DS' : getDS()
   },
   body: body
