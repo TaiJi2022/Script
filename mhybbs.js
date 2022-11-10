@@ -57,7 +57,20 @@ if ($.env.isRequest) {
 } else if (!reqData.headers.Cookie.includes('cookie_token=')) {
   $.notify('米游社', ``, `Cookie关键授权字段缺失, 需重新获取!`);
 } else {
-  $.http.post(reqData)
+  sign()
+}
+
+function getDS() {
+  const randomStr = Math.random().toString(36).slice(-6);
+  const timestamp = Math.floor(date / 1000)
+  const sign = hex_md5('salt=' + salt + '&t='+ timestamp + '&r='+ randomStr)
+  const DS = timestamp + ',' + randomStr + ',' + sign
+  $.info(`DS为：` + DS)
+  return DS
+}
+async function sign() {
+
+$.http.post(reqData)
     .then((resp) => {
         $.info(resp.body)
       if (resp.body.match(/375/)) {
@@ -96,16 +109,6 @@ if ($.env.isRequest) {
       $.done();
     })
 }
-
-function getDS() {
-  const randomStr = Math.random().toString(36).slice(-6);
-  const timestamp = Math.floor(date / 1000)
-  const sign = hex_md5('salt=' + salt + '&t='+ timestamp + '&r='+ randomStr)
-  const DS = timestamp + ',' + randomStr + ',' + sign
-  $.info(`DS为：` + DS)
-  return DS
-}
-
 function GetCookie() {
     const TM = $.read("TIME");
     const CK = $request.headers['Cookie'] || $request.headers['cookie'];
