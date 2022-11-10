@@ -76,7 +76,6 @@ $.http.post(reqData)
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = JSON.parse(resp.body)['data']
         const geetest = await captchaPass(data.gt, data.challenge)
-          $.info('验证结果：' + geetest)
           if (geetest?.validate) {
             const ex = {
                 'x-rpc-validate': geetest.validate,
@@ -84,6 +83,7 @@ $.http.post(reqData)
                 'x-rpc-seccode': geetest.validate + '%7Cjordan',
               }
             reqData.headers = {... reqData.headers, ... ex}
+            $.info('二次请求数据' + reqData)
              $.http.post(reqData)
                 .then((res) => {
                $.info(res.body)
