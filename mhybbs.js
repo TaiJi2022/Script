@@ -76,7 +76,8 @@ $.http.post(reqData)
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = JSON.parse(resp.body)['data']
         const geetest = await captchaPass(data.gt, data.challenge)
-          if (geetest?.validate) {
+         $.info('geetest' + geetest.validate)
+          if (geetest.validate) {
             const ex = {
                 'x-rpc-validate': geetest.validate,
                 'x-rpc-challenge': data['challenge'],
