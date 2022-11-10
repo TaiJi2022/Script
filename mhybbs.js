@@ -62,12 +62,15 @@ if ($.env.isRequest) {
         $.info(resp.body)
       if (resp.body.match(/375/)) {
         $.info("签到失败 需要验证 尝试自动校验中")
-          const geetest = await captchaPass(resp.body.data.gt, resp.body.data.challenge)
+          const geetest = captchaPass(resp.body.data.gt, resp.body.data.challenge)
           $.info(geetest)
           if (geetest?.validate) {
-            reqData.headers.x-rpc-validate = geetest.validate
-            reqData.headers.x-rpc-challenge = resp.body.data.challeng
-            reqData.headers.x-rpc-seccode = geetest.validate + '%7Cjordan'
+            const ex = {
+                'x-rpc-validate': geetest.validate,
+                'x-rpc-challenge': resp.body.data.challenge,
+                'x-rpc-seccode': geetest.validate + '%7Cjordan',
+              }
+            reqData.headers = {... reqData.headers, ... ex}
              $.http.post(reqData)
                 .then((res) => {
                $.info(res.body)
@@ -122,7 +125,7 @@ function GetCookie() {
 function captchaPass(gt, challenge) {
   const geetest = 'https://apiv6.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile&callback=geetest_1665115368313'
   return $.http.post(geetest).then(async (res) => {
-    const jsonp = await res.body.text()
+    const jsonp = res.body.text()
     const raw = jsonp.match(/^[^(]*?\((.*)\)[^)]*$/)?.[1]
     return JSON.parse(raw)
   })
