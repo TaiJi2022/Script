@@ -32,9 +32,9 @@ const reqData = {
   url: 'https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign',
   headers: {
     Cookie: CookieWA || $.read("COOKIE"),
-    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.38.1",
-    'x-rpc-app_version' : `2.38.1`,
-    'x-rpc-device_id' : `1`,
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.34.1",
+    'x-rpc-app_version' : `2.34.1`,
+    'x-rpc-device_id' : `136EB6CB8819447E96B3A291DD5442FA`,
     'x-rpc-client_type' : `5`,
     'DS' : getDS()
   },
@@ -70,7 +70,8 @@ if ($.env.isRequest) {
 }
 
 function getDS() {
-  const randomStr = '157000'
+  const randomStr = Math.floor(Math.random() * (200000 - 100000)) + 100000
+  $.info(`随机数为：` + randomStr)
   const timestamp = Math.floor(date / 1000)
   const sign = hex_md5('salt=' + salt + '&t='+ timestamp + '&r='+ randomStr)
   const DS = '' + timestamp + randomStr + sign
