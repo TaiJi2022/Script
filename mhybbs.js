@@ -70,7 +70,7 @@ if ($.env.isRequest) {
 }
 
 function getDS() {
-  const randomStr = Math.floor(Math.random() * (200000 - 100000)) + 100000
+  const randomStr = Math.random().toString(36).slice(-6);
   const timestamp = Math.floor(date / 1000)
   const sign = hex_md5('salt=' + salt + '&t='+ timestamp + '&r='+ randomStr)
   const DS = timestamp + ',' + randomStr + ',' + sign
