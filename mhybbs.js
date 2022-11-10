@@ -25,7 +25,7 @@ hostname= api-takumi.mihoyo.com
 */
 
 const $ = API('mhybbs');
-const salt = `PVeGWIZACpxXZ1ibMVJPi9inCY4Nd4y2`;
+const salt = `yUZ3s0Sna1IrSNfk29Vo6vRapdOyqyhB`;
 const date = new Date();
 const body = `{"act_id":"e202009291139501","region":"cn_gf01","uid":"100121857"}`;
 const reqData = {
