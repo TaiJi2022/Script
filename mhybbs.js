@@ -75,22 +75,22 @@ $.http.post(reqData)
       if (resp.body.match(/375/)) {
         $.info("签到失败 需要验证 尝试自动校验中")
         let data = JSON.parse(resp.body)['data']
-//         const geetest = await captchaPass(data.gt, data.challenge)
-//          $.info(geetest.toString)
-//           if (geetest.validate) {
-//             const ex = {
-//                 'x-rpc-validate': geetest.validate,
-//                 'x-rpc-challenge': data['challenge'],
-//                 'x-rpc-seccode': geetest.validate + '%7Cjordan',
-//               }
-//             reqData.headers = {... reqData.headers, ... ex}
-//             $.info('二次请求数据' + reqData)
-//              $.http.post(reqData)
-//                 .then((res) => {
-//                $.info(res.body)
-//                $.msgBody = "签到验证完成"
-//              })
-//           }
+         const geetest = await captchaPass(data.gt, data.challenge)
+          $.info(geetest.toString)
+           if (geetest.validate) {
+             const ex = {
+                 'x-rpc-validate': geetest.validate,
+                 'x-rpc-challenge': data['challenge'],
+                 'x-rpc-seccode': geetest.validate + '%7Cjordan',
+               }
+             reqData.headers = {... reqData.headers, ... ex}
+             $.info('二次请求数据' + reqData)
+              $.http.post(reqData)
+                 .then((res) => {
+                $.info(res.body)
+                $.msgBody = "签到验证完成"
+              })
+           }
       } else if (resp.body.match(/OK/)) {
         $.msgBody = date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉"
       } else if (resp.body.match(/(ÄúÒÑ|\u4e0b\u671f\u518d\u6765|>��Ǹ������)/)) {
@@ -127,7 +127,7 @@ function GetCookie() {
   } 
 
 function captchaPass(gt, challenge) {
-  const geetest = 'https://apiv6.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile'
+  const geetest = 'https://api.geetest.com/ajax.php?gt=' + gt + '&challenge='+ challenge + '&lang=zh-cn&pt=3&client_type=web_mobile'
     return $.http.get(geetest).then( async (res) => {   
     $.info( res.body)
     const jsonp = await res.body
