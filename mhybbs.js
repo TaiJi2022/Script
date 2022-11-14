@@ -96,7 +96,7 @@ $.http.post(reqData)
            }
       } else if (resp.body.match(/OK/)) {
         $.msgBody = date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉"
-      } else if (resp.body.match(/(ÄúÒÑ|\u4e0b\u671f\u518d\u6765|>��Ǹ������)/)) {
+      } else if (resp.body.match(/已经签到/)) {
         $.msgBody = date.getMonth() + 1 + "月" + date.getDate() + "日, 已签过 ⚠️"
       } else if (resp.body.match(/invalid/)) {
         $.msgBody = "签到失败, Cookie失效 ‼️‼️"
